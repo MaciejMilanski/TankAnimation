@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib.patches as patches
+import sys
+
 SP = [80] * 150 + [50] * 150 + [25] * 150 + [75] * 500
 area = 10000  # cm^2
 inputValveCoefficient = 1000  # cm^3/s
@@ -30,6 +32,10 @@ def init_2():
 
 def animate(i):
     global level
+
+    if i == 600:
+        sys.exit()
+
     # P-Conroller
     error = 1*(level - SP[i])
     valve = ((KP * error)/100)
